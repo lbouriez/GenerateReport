@@ -46,6 +46,7 @@ namespace GenerateReport
             string fileName = Path.Combine(FolderPath, FinalFile);
             renderer.PdfDocument.Save(fileName);
             #endregion
+
             Console.WriteLine($"\n\nProcess finished\n" +
                 $"We did aggregate {model.MainTitle.ToList().Select(x => x.SubTitle.Count()).Sum()} pdf documents\n" +
                 $"You can close the window");

@@ -15,6 +15,7 @@ namespace GenerateReport.MigraDocEx
             // For each title
             model.MainTitle.ToList().ForEach(x =>
             {
+                bool isTitleAdded = false;
                 //Section section = null;
                 //Paragraph paragraph = section.AddParagraph(x.Title);
                 //paragraph.Format.Font.Size = 0.01;
@@ -28,7 +29,7 @@ namespace GenerateReport.MigraDocEx
                     //{
                     //    section = model.document.AddSection();
                     //}
-
+                    bool isSubTitleAdded = false;
 
                     PdfDocument inputDocument = PdfReader.Open(u.FilePath, PdfDocumentOpenMode.Import);
                     // Iterate pages
@@ -53,13 +54,23 @@ namespace GenerateReport.MigraDocEx
                         }
                         #endregion
                         // First page, we add the title and create
-                        if (idx == 0)
+                        if (!isTitleAdded)
+                        {
+                            Paragraph paragraph = section.AddParagraph(x.Title);
+                            paragraph.Format.Font.Size = 0.01;
+                            paragraph.Format.Font.Color = Colors.White;
+                            paragraph.Format.OutlineLevel = OutlineLevel.Level1;
+                            paragraph.AddBookmark(u.Id);
+                            isTitleAdded = true;
+                        }
+                        if (!isSubTitleAdded)
                         {
                             Paragraph paragraph = section.AddParagraph(u.Title);
                             paragraph.Format.Font.Size = 0.01;
                             paragraph.Format.Font.Color = Colors.White;
                             paragraph.Format.OutlineLevel = OutlineLevel.Level2;
                             paragraph.AddBookmark(u.Id);
+                            isSubTitleAdded = true;
                         }
 
 

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GenerateReport": {
+      "commandName": "Project",
+      "commandLineArgs": "--path C:\\Users\\lbour\\OneDrive\\Bureau\\Mars"
+    }
+  }
+}
