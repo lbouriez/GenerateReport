@@ -1,7 +1,6 @@
 ﻿using Helper.Model;
 using MigraDoc.DocumentObjectModel;
 using System.Collections.Generic;
-using System.IO;
 
 namespace GenerateReport.Model
 {

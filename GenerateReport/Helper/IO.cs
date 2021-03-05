@@ -33,7 +33,7 @@ namespace GenerateReport.Helper
 
         public static IEnumerable<FileInfo> GetFiles(string path = "")
         {
-            var files = Directory.GetFiles(path, "*.*", SearchOption.TopDirectoryOnly);
+            var files = Directory.GetFiles(path, "*.pdf*", SearchOption.TopDirectoryOnly);
             return files.Select(x => new FileInfo(x));
         }
     }

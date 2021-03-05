@@ -5,6 +5,7 @@ using MigraDoc.DocumentObjectModel;
 using MigraDoc.Rendering;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace GenerateReport
 {
@@ -45,7 +46,9 @@ namespace GenerateReport
             string fileName = Path.Combine(FolderPath, FinalFile);
             renderer.PdfDocument.Save(fileName);
             #endregion
-            Console.WriteLine("\n\nProcess finished, you can close the window");
+            Console.WriteLine($"\n\nProcess finished\n" +
+                $"We did aggregate {model.MainTitle.ToList().Select(x => x.SubTitle.Count()).Sum()} pdf documents\n" +
+                $"You can close the window");
             Console.ReadLine();
         }
 
@@ -54,7 +57,8 @@ namespace GenerateReport
             Console.WriteLine($"Here is your configuration\n" +
                 $"The final document will be named => {FinalFile}\n" +
                 $"It will be in the folder => {FolderPath}\n" +
-                $"The title will be => {DocTitle}\n\n");
+                $"The title will be => {DocTitle}\n\n" +
+                $"Starting, wait...\n");
         }
     }
 }
