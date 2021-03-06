@@ -33,7 +33,8 @@ namespace GenerateReport.Helper
             if (dirs.Length == 0)
             {
                 var zipFiles = GetFiles(path, "zip");
-                zipFiles.ToList().ForEach(x => {
+                zipFiles.ToList().ForEach(x =>
+                {
                     ZipFile.ExtractToDirectory(x.FullName, path);
                     //x.Delete();
                 });

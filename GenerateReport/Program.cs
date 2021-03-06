@@ -35,15 +35,15 @@ namespace GenerateReport
             ChooseFolder();
             if (FolderPath == null)
             {
-                Console.WriteLine("ERROR: The path to handle is not defined");
-                Console.ReadLine();
+                MessageBox.Show("ERROR: The path to handle is not defined\n" +
+                    "Exiting...");
                 return;
             }
 
             if (int.Parse(DateTime.Now.ToString("yyyy")) > 2021)
             {
-                Console.WriteLine("ERROR: An error happened, you need to ask me for help ;)");
-                Console.ReadLine();
+                MessageBox.Show("ERROR: An error happened, you need to ask me for help ;)\n" +
+                    "Exiting...");
                 return;
             }
             DisplayArguments();
@@ -63,10 +63,9 @@ namespace GenerateReport
             renderer.PdfDocument.Save(fileName);
             #endregion
 
-            Console.WriteLine($"\n\nProcess finished\n" +
+            MessageBox.Show($"Process finished\n" +
                 $"We did aggregate {model.MainTitle.ToList().Select(x => x.SubTitle.Count()).Sum()} pdf documents\n" +
-                $"You can close the window");
-            Console.ReadLine();
+                $"You can close the window.");
         }
 
         private void ChooseFolder()
@@ -84,11 +83,13 @@ namespace GenerateReport
 
         private void DisplayArguments()
         {
-            Console.WriteLine($"Here is your configuration\n" +
-                $"The final document will be named => {FinalFile}\n" +
-                $"It will be in the folder => {FolderPath}\n" +
-                $"The title will be => {DocTitle}\n\n" +
-                $"Starting, wait...\n");
+            var message = $"Here is your configuration\n" +
+                $"The final document will be named:\n" +
+                $"  -> {FinalFile}\n" +
+                $"It will be in the folder:\n" +
+                $"  -> {FolderPath}\n" +
+                $"Click ok to continue...\n";
+            MessageBox.Show(message);
         }
     }
 }
