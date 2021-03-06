@@ -30,6 +30,12 @@ namespace GenerateReport
         [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "<Pending>")]
         private void OnExecute()
         {
+            if(int.Parse(DateTime.Now.ToString("yyyy")) > 2021)
+            {
+                Console.WriteLine("An error happened, you need to ask me for help ;)");
+                Console.ReadLine();
+                return;
+            }
             DisplayArguments();
             var model = IO.GetModel(FolderPath, DocTitle);
             // Create a MigraDoc document
