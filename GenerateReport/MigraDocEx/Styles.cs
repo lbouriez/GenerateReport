@@ -59,13 +59,14 @@ namespace GenerateReport.MigraDocEx
 
             // Create a new style called TOC based on style Normal
             style = document.Styles.AddStyle("TOC 1", "Normal");
-            style.ParagraphFormat.AddTabStop("16cm", TabAlignment.Right, TabLeader.Dots);
+            style.ParagraphFormat.AddTabStop("18cm", TabAlignment.Right, TabLeader.Dots);
             style.ParagraphFormat.Font.Color = Colors.Black;
+            style.ParagraphFormat.Font.Size = 16;
 
             // Create a new style called TOC based on style Normal
             style = document.Styles.AddStyle("TOC 2", "Normal");
-            style.ParagraphFormat.AddTabStop("16cm", TabAlignment.Right, TabLeader.Dots);
-            style.ParagraphFormat.Font.Color = Colors.Black;
+            style.ParagraphFormat.AddTabStop("18cm", TabAlignment.Right, TabLeader.Dots);
+            style.ParagraphFormat.Font.Size = 14;
         }
     }
 }

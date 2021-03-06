@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Helper.Model
 {
@@ -11,13 +12,21 @@ namespace Helper.Model
             {
                 throw new ArgumentNullException(nameof(file));
             }
-            Title = Path.GetFileNameWithoutExtension(file.Name);
+            Title = GetTitle(file.Name);
             if (!string.IsNullOrEmpty(Title) && char.IsDigit(Title[0]))
             {
                 Title = Title[1..];
             }
             FilePath = file.FullName;
             Id = Guid.NewGuid().ToString("N");
+        }
+
+        private string GetTitle(string fileName)
+        {
+            string res = Path.GetFileNameWithoutExtension(fileName);
+            res = Regex.Replace(res, @"\s+", " ");
+            res = res.Replace($"- {DateTime.Now:MMMM} {DateTime.Now:yyyy}", string.Empty);
+            return res.Trim();
         }
 
         public string Title { get; set; }

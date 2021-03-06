@@ -11,10 +11,12 @@ namespace GenerateReport.MigraDocEx
         /// </summary>
         public static void DefineTableOfContents(Doc model)
         {
-            Section section = model.Document.LastSection;
+            Section section = model.Document.AddSection();
+            section.PageSetup.LeftMargin = 40;
+            section.PageSetup.RightMargin = 40;
             section.AddPageBreak();
             Paragraph paragraph = section.AddParagraph("Contents");
-            paragraph.Format.Font.Size = 14;
+            paragraph.Format.Font.Size = 20;
             paragraph.Format.Font.Bold = true;
             paragraph.Format.SpaceAfter = 24;
             paragraph.Format.OutlineLevel = OutlineLevel.Level1;
@@ -35,6 +37,7 @@ namespace GenerateReport.MigraDocEx
                         hyperlinkLvl1 = paragraph.AddHyperlink(u.Id);
                         hyperlinkLvl1.AddText($"{x.Title}\t");
                         hyperlinkLvl1.AddPageRefField(u.Id);
+                        paragraph.Format.SpaceAfter = "0.25cm";
                     }
                     paragraph = section.AddParagraph();
                     paragraph.Style = "TOC 2";
