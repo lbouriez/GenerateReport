@@ -6,6 +6,7 @@ using MigraDoc.Rendering;
 using System;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace GenerateReport
 {
@@ -13,10 +14,11 @@ namespace GenerateReport
     [HelpOption("-?")]
     class Program
     {
+        [STAThread]
         private static void Main(string[] args) => CommandLineApplication.Execute<Program>(args);
 
         [Option("-p|--path", Description = "Define the path where to work. Default is executable path")]
-        private string FolderPath { get; } = Directory.GetCurrentDirectory();
+        private string FolderPath { get; set; }
 
         //[Option("-l|--logo", Description = "(Not loading correctly for now) If there is a logo on the main page")]
         //private string DocLogo { get; } = @"";
@@ -30,9 +32,17 @@ namespace GenerateReport
         [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "<Pending>")]
         private void OnExecute()
         {
-            if(int.Parse(DateTime.Now.ToString("yyyy")) > 2021)
+            ChooseFolder();
+            if (FolderPath == null)
             {
-                Console.WriteLine("An error happened, you need to ask me for help ;)");
+                Console.WriteLine("ERROR: The path to handle is not defined");
+                Console.ReadLine();
+                return;
+            }
+
+            if (int.Parse(DateTime.Now.ToString("yyyy")) > 2021)
+            {
+                Console.WriteLine("ERROR: An error happened, you need to ask me for help ;)");
                 Console.ReadLine();
                 return;
             }
@@ -57,6 +67,19 @@ namespace GenerateReport
                 $"We did aggregate {model.MainTitle.ToList().Select(x => x.SubTitle.Count()).Sum()} pdf documents\n" +
                 $"You can close the window");
             Console.ReadLine();
+        }
+
+        private void ChooseFolder()
+        {
+            if (FolderPath != null)
+            {
+                return;
+            }
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                FolderPath = fbd.SelectedPath;
+            }
         }
 
         private void DisplayArguments()
