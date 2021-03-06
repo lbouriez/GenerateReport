@@ -16,4 +16,4 @@ For example, let's say you have:
 You need to put GenerateReport.exe into Main Folder and double click on it.
 
 # Generation
-Use this command to publish a clean packet including all the .net pre-requisite: `dotnet publish -r win-x64 -c Release /p:PublishSingleFile=true`
+Use this command to publish a clean packet including all the .net pre-requisite: `dotnet publish -o . -r win-x64 -c Release /p:PublishSingleFile=true`
