@@ -1,5 +1,4 @@
-﻿using GenerateReport.Model;
-using Helper.Model;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -9,25 +8,16 @@ namespace GenerateReport.Helper
 {
     public static class IO
     {
-        public static Doc GetModel(string path = "", string title = "")
+        public static IEnumerable<DirectoryInfo> GetDirectory(string path)
         {
-            var doc = new Doc(title);
-            List<MainTitle> lMainTitle = new List<MainTitle>();
-            var dirs = GetDirectory(path);
-            dirs.ToList().ForEach(x =>
+            if (string.IsNullOrEmpty(path))
             {
-                var el = new MainTitle(x);
-                if (el != null)
-                {
-                    lMainTitle.Add(el);
-                }
-            });
-            doc.MainTitle = lMainTitle;
-            return doc;
-        }
-
-        public static IEnumerable<DirectoryInfo> GetDirectory(string path = "")
-        {
+                throw new ArgumentNullException(nameof(path), "The folder path is mandatory");
+            }
+            if (!Directory.Exists(path))
+            {
+                throw new ArgumentException("The folder path given in parameter is incorrect");
+            }
             var dirs = Directory.GetDirectories(path, "*", SearchOption.TopDirectoryOnly);
             // We may be in the case of zip file, trying...
             if (dirs.Length == 0)

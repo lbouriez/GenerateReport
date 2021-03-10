@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace Helper.Model
+namespace GenerateReport.Models.PDFDocument
 {
     public class SubTitle
     {
@@ -21,7 +21,7 @@ namespace Helper.Model
             Id = Guid.NewGuid().ToString("N");
         }
 
-        private string GetTitle(string fileName)
+        private static string GetTitle(string fileName)
         {
             string res = Path.GetFileNameWithoutExtension(fileName);
             res = Regex.Replace(res, @"\s+", " ");

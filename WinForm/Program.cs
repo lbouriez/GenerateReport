@@ -6,15 +6,13 @@ using MigraDoc.Rendering;
 using System;
 using System.IO;
 using System.Linq;
-using System.Windows.Forms;
 
-namespace GenerateReport
+namespace WinForm
 {
     [Command(Name = "Report generator for my beautiful wife", Description = "Will merge all pdf file and create the TOC")]
     [HelpOption("-?")]
     class Program
     {
-        [STAThread]
         private static void Main(string[] args) => CommandLineApplication.Execute<Program>(args);
 
         [Option("-p|--path", Description = "Define the path where to work. Default is executable path")]

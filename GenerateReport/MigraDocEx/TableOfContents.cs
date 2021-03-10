@@ -1,4 +1,4 @@
-﻿using GenerateReport.Model;
+﻿using GenerateReport.Models.PDFDocument;
 using MigraDoc.DocumentObjectModel;
 using System.Linq;
 
@@ -6,11 +6,12 @@ namespace GenerateReport.MigraDocEx
 {
     public class TableOfContents
     {
-        /// <summary>
-        /// Defines the cover page.
-        /// </summary>
-        public static void DefineTableOfContents(Doc model)
+        public static void DefineTableOfContents(FinalDocument model)
         {
+            if (!model.TOC)
+            {
+                return;
+            }
             Section section = model.Document.AddSection();
             section.PageSetup.LeftMargin = 40;
             section.PageSetup.RightMargin = 40;
