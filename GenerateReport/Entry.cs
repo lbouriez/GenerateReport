@@ -12,19 +12,10 @@ namespace GenerateReport
 {
     public static class Entry
     {
-        public static void Generate(string FolderPath, string DocLogo, string FinalFile, string DocTitle, bool TOC)
+        public static void Generate(EntryParameters parameters)
         {
             try
             {
-                var parameters = new EntryParameters()
-                {
-                    FileName = FinalFile,
-                    TitleDocument = DocTitle,
-                    WorkPath = FolderPath,
-                    Logo = DocLogo,
-                    TOC = TOC
-                };
-
                 DisplayArguments(parameters);
 
                 var model = new FinalDocument(parameters);

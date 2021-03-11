@@ -27,6 +27,7 @@ namespace GenerateReport.Models.PDFDocument
             Logo = parameters.Logo;
             MainTitle = GetMainTitle(parameters.WorkPath);
             TOC = parameters.TOC;
+            Author = parameters.Author;
         }
 
         private static IEnumerable<MainTitle> GetMainTitle(string path)
@@ -49,6 +50,7 @@ namespace GenerateReport.Models.PDFDocument
         }
 
         public string Title { get; set; }
+        public string Author { get; set; }
         public string Logo
         {
             get { return _logo; }

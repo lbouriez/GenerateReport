@@ -12,7 +12,7 @@ namespace GenerateReport.MigraDocEx
 
             document.Info.Title = model.Title;
             document.Info.Subject = model.Title;
-            document.Info.Author = "Giulia Ippolito";
+            document.Info.Author = string.IsNullOrEmpty(model.Author) ? "Automated generate report" : model.Author;
         }
     }
 }
