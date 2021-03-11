@@ -21,8 +21,8 @@ Use these commands to publish a clean package.
 ## Muraflex console app
 `dotnet publish -c MuraflexApp /p:PublishProfile=MuraflexBible\Properties\PublishProfiles\FolderProfile.pubxml`
 
-## General console app
+## Console app
 `dotnet publish -c ConsoleApp /p:PublishProfile=ConsoleApp\Properties\PublishProfiles\FolderProfile.pubxml`
 
-## Avalonia app
-`dotnet publish -c AvaloniaApp /p:PublishProfile=AvaloniaApp\Properties\PublishProfiles\FolderProfile.pubxml`
+## WinForm app
+`Coming soon...`
