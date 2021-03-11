@@ -19,10 +19,10 @@ You need to put GenerateReport.exe into Main Folder and double click on it.
 Use these commands to publish a clean package.
 
 ## Muraflex console app
-`dotnet publish -c MuraflexBible /p:PublishProfile=MuraflexBible\Properties\PublishProfiles\FolderProfile.pubxml`
+`dotnet publish -c MuraflexApp /p:PublishProfile=MuraflexBible\Properties\PublishProfiles\FolderProfile.pubxml`
 
 ## General console app
-`Soon...`
+`dotnet publish -c ConsoleApp /p:PublishProfile=ConsoleApp\Properties\PublishProfiles\FolderProfile.pubxml`
 
-## Winform app
-`Soon...`
+## Avalonia app
+`dotnet publish -c AvaloniaApp /p:PublishProfile=AvaloniaApp\Properties\PublishProfiles\FolderProfile.pubxml`
