@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <Configurations>AvaloniaApp;ConsoleApp;MuraflexApp;Debug</Configurations>
+    <ApplicationIcon>pdf.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.10.0" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.0" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0" />
+   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GenerateReport\GenerateReport.csproj" />
+  </ItemGroup>
+</Project>

@@ -3,7 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Configurations>Debug;Release;MuraflexBible;WinForm</Configurations>
+    <Configurations>Debug;Release;MuraflexBible;WinForm;AvaloniaApp;ConsoleApp;MuraflexApp</Configurations>
+    <ApplicationIcon>pdf.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

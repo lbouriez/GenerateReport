@@ -11,7 +11,7 @@
     <NoWin32Manifest>true</NoWin32Manifest>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <Configurations>Debug;Release;MuraflexBible;WinForm</Configurations>
+    <Configurations>Debug;Release;MuraflexBible;WinForm;AvaloniaApp;ConsoleApp;MuraflexApp</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
