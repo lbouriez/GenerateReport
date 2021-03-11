@@ -1,14 +1,14 @@
-﻿using GenerateReport.Model;
+﻿using GenerateReport.Models.PDFDocument;
 using MigraDoc.DocumentObjectModel;
 
 namespace GenerateReport.MigraDocEx
 {
-    public class Styles
+    public class DocumentStyles
     {
         /// <summary>
         /// Defines the styles used in the document.
         /// </summary>
-        public static void DefineStyles(Doc model)
+        public static void DefineStyles(FinalDocument model)
         {
             var document = model.Document;
             // Get the predefined style Normal.

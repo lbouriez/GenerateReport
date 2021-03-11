@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Helper.Model
+namespace GenerateReport.Models.PDFDocument
 {
     public class MainTitle
     {
+        private string _id;
         public MainTitle(DirectoryInfo dir)
         {
             if (dir == null)
@@ -35,6 +36,20 @@ namespace Helper.Model
 
         public string Title { get; set; }
         public IEnumerable<SubTitle> SubTitle { get; set; }
-        public string Id { get; set; }
+        public string Id
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_id))
+                {
+                    _id = Guid.NewGuid().ToString("N");
+                }
+                return _id;
+            }
+            set
+            {
+                _id = value;
+            }
+        }
     }
 }

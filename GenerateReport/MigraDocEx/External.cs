@@ -1,4 +1,4 @@
-﻿using GenerateReport.Model;
+﻿using GenerateReport.Models.PDFDocument;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Shapes;
 using PdfSharpCore.Pdf;
@@ -9,7 +9,7 @@ namespace GenerateReport.MigraDocEx
 {
     public class External
     {
-        public static void MergeFiles(Doc model)
+        public static void MergeFiles(FinalDocument model)
         {
             Section section = model.Document.LastSection;
             // For each title

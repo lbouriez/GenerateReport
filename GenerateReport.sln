@@ -5,19 +5,42 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateReport", "GenerateReport\GenerateReport.csproj", "{89D22B1B-A9B0-4F3E-BBFD-E0CEFC600F4B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{A6394B19-70BC-453B-836C-5E635E7A2F84}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bootstrap", "Bootstrap", "{61554B7E-A504-4077-AB9B-CD8CB4E85A5E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuraflexBible", "MuraflexBible\MuraflexBible.csproj", "{3F4B8E36-2D5A-4C12-8AE5-106DF2D4B2C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		ConsoleApp|Any CPU = ConsoleApp|Any CPU
 		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		MuraflexApp|Any CPU = MuraflexApp|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89D22B1B-A9B0-4F3E-BBFD-E0CEFC600F4B}.ConsoleApp|Any CPU.ActiveCfg = ConsoleApp|Any CPU
+		{89D22B1B-A9B0-4F3E-BBFD-E0CEFC600F4B}.ConsoleApp|Any CPU.Build.0 = ConsoleApp|Any CPU
 		{89D22B1B-A9B0-4F3E-BBFD-E0CEFC600F4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{89D22B1B-A9B0-4F3E-BBFD-E0CEFC600F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{89D22B1B-A9B0-4F3E-BBFD-E0CEFC600F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{89D22B1B-A9B0-4F3E-BBFD-E0CEFC600F4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89D22B1B-A9B0-4F3E-BBFD-E0CEFC600F4B}.MuraflexApp|Any CPU.ActiveCfg = MuraflexApp|Any CPU
+		{89D22B1B-A9B0-4F3E-BBFD-E0CEFC600F4B}.MuraflexApp|Any CPU.Build.0 = MuraflexApp|Any CPU
+		{A6394B19-70BC-453B-836C-5E635E7A2F84}.ConsoleApp|Any CPU.ActiveCfg = ConsoleApp|Any CPU
+		{A6394B19-70BC-453B-836C-5E635E7A2F84}.ConsoleApp|Any CPU.Build.0 = ConsoleApp|Any CPU
+		{A6394B19-70BC-453B-836C-5E635E7A2F84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6394B19-70BC-453B-836C-5E635E7A2F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6394B19-70BC-453B-836C-5E635E7A2F84}.MuraflexApp|Any CPU.ActiveCfg = MuraflexApp|Any CPU
+		{3F4B8E36-2D5A-4C12-8AE5-106DF2D4B2C6}.ConsoleApp|Any CPU.ActiveCfg = ConsoleApp|Any CPU
+		{3F4B8E36-2D5A-4C12-8AE5-106DF2D4B2C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F4B8E36-2D5A-4C12-8AE5-106DF2D4B2C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F4B8E36-2D5A-4C12-8AE5-106DF2D4B2C6}.MuraflexApp|Any CPU.ActiveCfg = MuraflexApp|Any CPU
+		{3F4B8E36-2D5A-4C12-8AE5-106DF2D4B2C6}.MuraflexApp|Any CPU.Build.0 = MuraflexApp|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A6394B19-70BC-453B-836C-5E635E7A2F84} = {61554B7E-A504-4077-AB9B-CD8CB4E85A5E}
+		{3F4B8E36-2D5A-4C12-8AE5-106DF2D4B2C6} = {61554B7E-A504-4077-AB9B-CD8CB4E85A5E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C5C3B6B5-EF29-4385-9043-894A5E1EEAF3}

@@ -1,15 +1,16 @@
-﻿using GenerateReport.Model;
+﻿using GenerateReport.Models.PDFDocument;
 using MigraDoc.DocumentObjectModel;
 
-namespace GenerateReport.MigraDocExEx
+namespace GenerateReport.MigraDocEx
 {
     public class Cover
     {
-        /// <summary>
-        /// Defines the cover page.
-        /// </summary>
-        public static void DefineCover(Doc model)
+        public static void DefineCover(FinalDocument model)
         {
+            if (string.IsNullOrEmpty(model.Title) && string.IsNullOrEmpty(model.Logo))
+            {
+                return;
+            }
             Section section = model.Document.AddSection();
 
             Paragraph paragraph;
