@@ -36,7 +36,7 @@ namespace GenerateReport
                 External.MergeFiles(model);
 
                 // Generate the document
-                GenerateFile(model.Document, parameters.WorkPath, parameters.FileName);
+                GenerateFile(model.Document, parameters);
 
                 Logger.Log($"Process ended correctly.\n" +
                     $"{model.MainTitle.ToList().Select(x => x.SubTitle.Count()).Sum()} files were merged.\n" +
@@ -48,7 +48,7 @@ namespace GenerateReport
             }
             finally
             {
-                Logger.Log("Process finished, you can close the window...");
+                Logger.Log("Process finished...\n");
             }
         }
 
@@ -58,11 +58,11 @@ namespace GenerateReport
                 $"The final document will be named:\n" +
                 $"  -> {parameters.FileName}\n" +
                 $"It will be in the folder:\n" +
-                $"  -> {parameters.WorkPath}\n" +
+                $"  -> {parameters.FinalPath ?? parameters.WorkPath}\n" +
                 $"Process running, wait...\n");
         }
 
-        private static void GenerateFile(Document doc, string WorkFolder, string FileName)
+        private static void GenerateFile(Document doc, EntryParameters parameters)
         {
             MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToFile(doc, "MigraDoc.mdddl");
             PdfDocumentRenderer renderer = new PdfDocumentRenderer(true)
@@ -70,7 +70,7 @@ namespace GenerateReport
                 Document = doc
             };
             renderer.RenderDocument();
-            string fileName = Path.Combine(WorkFolder, FileName);
+            string fileName = Path.Combine(parameters.FinalPath ?? parameters.WorkPath, parameters.FileName);
             renderer.PdfDocument.Save(fileName);
         }
     }
