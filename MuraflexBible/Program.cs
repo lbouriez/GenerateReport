@@ -18,7 +18,7 @@ namespace MuraflexBible
             var parameters = new EntryParameters()
             {
                 FileName = $"{DateTime.Now:yyyy}-{DateTime.Now.AddMonths(-1):MM}-{DateTime.Now:dd} - Monthly Reporting Book-Bible.pdf",
-                TitleDocument = $"Muraflex Group Monthly Reporting Book {DateTime.Now:MMMM} {DateTime.Now:yyyy}",
+                TitleDocument = $"Muraflex Group Monthly Reporting Book {DateTime.Now.AddMonths(-1):MMMM} {DateTime.Now:yyyy}",
                 FinalPath = @"F:\Executive Monthly Reporting Book_Bible\2021",
                 WorkPath = @"F:\Executive Monthly Reporting Book_Bible\Next Bible",
                 Logo = null,
@@ -33,7 +33,7 @@ namespace MuraflexBible
         private static void CleanForMuraflex(EntryParameters parameters)
         {
             // Move all the documents used into the personal folder for backup
-            var backupFolder = $@"C:\Users\gippolito\OneDrive - Muraflex inc\+Monthly Executive Book- The Bible\{DateTime.Now:yyyy}\{DateTime.Now:MM} - Executive Reporting Book";
+            var backupFolder = $@"C:\Users\gippolito\OneDrive - Muraflex inc\+Monthly Executive Book- The Bible\{DateTime.Now:yyyy}\{DateTime.Now.AddMonths(-1):MM} - Executive Reporting Book";
 
             if (Directory.Exists(parameters.WorkPath))
             {
