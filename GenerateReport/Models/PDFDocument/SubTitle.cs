@@ -25,7 +25,10 @@ namespace GenerateReport.Models.PDFDocument
         {
             string res = Path.GetFileNameWithoutExtension(fileName);
             res = Regex.Replace(res, @"\s+", " ");
+            // We remove from the title the date to have more space in the TOC
+            // This hack could be parameterized...
             res = res.Replace($"- {DateTime.Now:MMMM} {DateTime.Now:yyyy}", string.Empty);
+            res = res.Replace($"- {DateTime.Now.AddMonths(-1):MMMM} {DateTime.Now:yyyy}", string.Empty);
             return res.Trim();
         }
 
