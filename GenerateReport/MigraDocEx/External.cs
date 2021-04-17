@@ -13,60 +13,32 @@ namespace GenerateReport.MigraDocEx
         {
             Section section = model.Document.LastSection;
             // For each title
-            model.MainTitle.ToList().ForEach(x =>
+            model.MainTitle.ToList().ForEach(mainTitleElm =>
             {
                 bool isTitleAdded = false;
 
                 // For each subtitle
-                x.SubTitle.ToList().ForEach(u =>
+                mainTitleElm.SubTitle.ToList().ForEach(subtitleElm =>
                 {
                     bool isSubTitleAdded = false;
 
-                    PdfDocument inputDocument = PdfReader.Open(u.FilePath, PdfDocumentOpenMode.Import);
+                    PdfDocument inputDocument = PdfReader.Open(subtitleElm.FilePath, PdfDocumentOpenMode.Import);
                     // Iterate pages
                     int count = inputDocument.PageCount;
                     for (int idx = 0; idx < count; idx++)
                     {
-                        #region Define the orientation
                         section = model.Document.AddSection();
-
-                        if (inputDocument.Pages[idx].Orientation == PdfSharpCore.PageOrientation.Landscape)
-                        {
-                            section.PageSetup.PageHeight = inputDocument.Pages[idx].Width.Value;
-                            section.PageSetup.PageWidth = inputDocument.Pages[idx].Height.Value;
-                            section.PageSetup.Orientation = Orientation.Landscape;
-                        }
-                        else
-                        {
-                            section.PageSetup.PageHeight = inputDocument.Pages[idx].Height.Value;
-                            section.PageSetup.PageWidth = inputDocument.Pages[idx].Width.Value;
-
-                            section.PageSetup.Orientation = Orientation.Portrait;
-                        }
+                        #region Define the orientation
+                        bool isLandscape = inputDocument.Pages[idx].Orientation == PdfSharpCore.PageOrientation.Landscape;
+                        section.PageSetup.PageHeight = isLandscape ? inputDocument.Pages[idx].Width.Value : inputDocument.Pages[idx].Height.Value;
+                        section.PageSetup.PageWidth = isLandscape ? inputDocument.Pages[idx].Height.Value : inputDocument.Pages[idx].Width.Value;
+                        section.PageSetup.Orientation = isLandscape ? Orientation.Landscape : Orientation.Portrait;
                         #endregion
-                        // First page, we add the title and create
-                        if (!isTitleAdded)
-                        {
-                            Paragraph paragraph = section.AddParagraph(x.Title);
-                            paragraph.Format.Font.Size = 0.01;
-                            paragraph.Format.Font.Color = Colors.White;
-                            paragraph.Format.OutlineLevel = OutlineLevel.Level1;
-                            paragraph.AddBookmark(u.Id);
-                            isTitleAdded = true;
-                        }
-                        if (!isSubTitleAdded)
-                        {
-                            Paragraph paragraph = section.AddParagraph(u.Title);
-                            paragraph.Format.Font.Size = 0.01;
-                            paragraph.Format.Font.Color = Colors.White;
-                            paragraph.Format.OutlineLevel = OutlineLevel.Level2;
-                            paragraph.AddBookmark(u.Id);
-                            isSubTitleAdded = true;
-                        }
-
+                        isTitleAdded = AddTitle(isTitleAdded, section, mainTitleElm, subtitleElm);
+                        isSubTitleAdded = AddSubtitle(isSubTitleAdded, section, subtitleElm);
 
                         #region Add the page
-                        Image image = section.AddImage($"{u.FilePath}#{idx + 1}");
+                        Image image = section.AddImage($"{subtitleElm.FilePath}#{idx + 1}");
                         image.LockAspectRatio = true;
                         image.RelativeHorizontal = RelativeHorizontal.Page;
                         image.RelativeVertical = RelativeVertical.Page;
@@ -76,6 +48,34 @@ namespace GenerateReport.MigraDocEx
                     }
                 });
             });
+        }
+
+        private static bool AddTitle(bool isTitleAdded, Section section, MainTitle mainTitleElm, SubTitle subtitleElm)
+        {
+            if (!isTitleAdded)
+            {
+                Paragraph paragraph = section.AddParagraph(mainTitleElm.Title);
+                paragraph.Format.Font.Size = 0.01;
+                paragraph.Format.Font.Color = Colors.White;
+                paragraph.Format.OutlineLevel = OutlineLevel.Level1;
+                paragraph.AddBookmark(subtitleElm.Id);
+                isTitleAdded = true;
+            }
+            return isTitleAdded;
+        }
+
+        private static bool AddSubtitle(bool isSubTitleAdded, Section section, SubTitle subtitleElm)
+        {
+            if (!isSubTitleAdded)
+            {
+                Paragraph paragraph = section.AddParagraph(subtitleElm.Title);
+                paragraph.Format.Font.Size = 0.01;
+                paragraph.Format.Font.Color = Colors.White;
+                paragraph.Format.OutlineLevel = OutlineLevel.Level2;
+                paragraph.AddBookmark(subtitleElm.Id);
+                isSubTitleAdded = true;
+            }
+            return isSubTitleAdded;
         }
     }
 }
