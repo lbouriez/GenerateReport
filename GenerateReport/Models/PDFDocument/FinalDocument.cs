@@ -41,10 +41,7 @@ namespace GenerateReport.Models.PDFDocument
             dirs.ToList().ForEach(x =>
             {
                 var el = new MainTitle(x);
-                if (el != null)
-                {
-                    lMainTitle.Add(el);
-                }
+                lMainTitle.Add(el);
             });
             return lMainTitle;
         }

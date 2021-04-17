@@ -4,7 +4,7 @@ using System.IO;
 
 namespace MuraflexBible
 {
-    class Program
+    static class Program
     {
         private static void Main(string[] args)
         {
@@ -35,38 +35,40 @@ namespace MuraflexBible
             // Move all the documents used into the personal folder for backup
             var backupFolder = $@"C:\Users\gippolito\OneDrive - Muraflex inc\+Monthly Executive Book- The Bible\{DateTime.Now:yyyy}\{DateTime.Now.AddMonths(-1):MM} - Executive Reporting Book";
 
-            if (Directory.Exists(parameters.WorkPath))
+            if (!Directory.Exists(parameters.WorkPath))
             {
-                // Create directories
-                foreach (string dirPath in Directory.GetDirectories(parameters.WorkPath, "*",
-                    SearchOption.AllDirectories))
-                    Directory.CreateDirectory(dirPath.Replace(parameters.WorkPath, backupFolder));
+                return;
+            }
 
-                // Copy all the files
-                foreach (string newPath in Directory.GetFiles(parameters.WorkPath, "*.*",
-                    SearchOption.AllDirectories))
-                    File.Copy(newPath, newPath.Replace(parameters.WorkPath, backupFolder), true);
+            // Create directories
+            foreach (string dirPath in Directory.GetDirectories(parameters.WorkPath, "*",
+                SearchOption.AllDirectories))
+                Directory.CreateDirectory(dirPath.Replace(parameters.WorkPath, backupFolder));
 
-                // Clean server folder
-                ConsoleKey response;
-                do
+            // Copy all the files
+            foreach (string newPath in Directory.GetFiles(parameters.WorkPath, "*.*",
+                SearchOption.AllDirectories))
+                File.Copy(newPath, newPath.Replace(parameters.WorkPath, backupFolder), true);
+
+            // Clean server folder
+            ConsoleKey response;
+            do
+            {
+                Console.Write("Amore, should I clean the files in ther server, I did backup them into your onedrive (default=yes)??? [y/n]");
+                response = Console.ReadKey(false).Key;
+                if (response == ConsoleKey.Enter)
                 {
-                    Console.Write("Amore, should I clean the files in ther server, I did backup them into your onedrive (default=yes)??? [y/n]");
-                    response = Console.ReadKey(false).Key;
-                    if (response == ConsoleKey.Enter)
-                    {
-                        response = ConsoleKey.Y;
-                    }
-
-                } while (response != ConsoleKey.Y && response != ConsoleKey.N);
-
-                bool confirmed = response == ConsoleKey.Y;
-                if (confirmed)
-                {
-                    foreach (string newPath in Directory.GetFiles(parameters.WorkPath, "*.*",
-                    SearchOption.AllDirectories))
-                        File.Delete(newPath);
+                    response = ConsoleKey.Y;
                 }
+
+            } while (response != ConsoleKey.Y && response != ConsoleKey.N);
+
+            bool confirmed = response == ConsoleKey.Y;
+            if (confirmed)
+            {
+                foreach (string newPath in Directory.GetFiles(parameters.WorkPath, "*.*",
+                SearchOption.AllDirectories))
+                    File.Delete(newPath);
             }
         }
     }

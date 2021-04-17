@@ -2,13 +2,8 @@
 
 namespace GenerateReport.Helper
 {
-    public sealed class Logger
+    public static class Logger
     {
-        //public static readonly Logger instance = new Logger();
-        //private Logger()
-        //{
-        //    Log("Logger instantiated");
-        //}
         public static void Error(string message)
         {
             Console.ForegroundColor = ConsoleColor.Red;

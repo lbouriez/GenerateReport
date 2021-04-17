@@ -26,7 +26,6 @@ namespace GenerateReport.Helper
                 zipFiles.ToList().ForEach(x =>
                 {
                     ZipFile.ExtractToDirectory(x.FullName, path);
-                    //x.Delete();
                 });
                 dirs = Directory.GetDirectories(path, "*", SearchOption.TopDirectoryOnly);
             }

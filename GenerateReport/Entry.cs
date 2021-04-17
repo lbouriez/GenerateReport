@@ -39,7 +39,7 @@ namespace GenerateReport
                 GenerateFile(model.Document, parameters);
 
                 Logger.Log($"Process ended correctly.\n" +
-                    $"{model.MainTitle.ToList().Select(x => x.SubTitle.Count()).Sum()} files were merged.\n" +
+                    $"{model.MainTitle.Select(x => x.SubTitle.Count()).Sum()} files were merged.\n" +
                     $"You can find everything inside => {parameters.WorkPath}");
             }
             catch (Exception ex)

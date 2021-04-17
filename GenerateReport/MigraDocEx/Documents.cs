@@ -3,7 +3,7 @@ using MigraDoc.DocumentObjectModel;
 
 namespace GenerateReport.MigraDocEx
 {
-    public class Documents
+    public static class Documents
     {
         public static void CreateDocument(FinalDocument model)
         {

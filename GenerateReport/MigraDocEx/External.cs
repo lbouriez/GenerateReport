@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace GenerateReport.MigraDocEx
 {
-    public class External
+    public static class External
     {
         public static void MergeFiles(FinalDocument model)
         {
@@ -16,19 +16,10 @@ namespace GenerateReport.MigraDocEx
             model.MainTitle.ToList().ForEach(x =>
             {
                 bool isTitleAdded = false;
-                //Section section = null;
-                //Paragraph paragraph = section.AddParagraph(x.Title);
-                //paragraph.Format.Font.Size = 0.01;
-                //paragraph.Format.Font.Color = Colors.White;
-                //paragraph.Format.OutlineLevel = OutlineLevel.Level1;
-                //paragraph.AddBookmark(x.Id);
+
                 // For each subtitle
                 x.SubTitle.ToList().ForEach(u =>
                 {
-                    //if (section == null)
-                    //{
-                    //    section = model.document.AddSection();
-                    //}
                     bool isSubTitleAdded = false;
 
                     PdfDocument inputDocument = PdfReader.Open(u.FilePath, PdfDocumentOpenMode.Import);
@@ -80,11 +71,8 @@ namespace GenerateReport.MigraDocEx
                         image.RelativeHorizontal = RelativeHorizontal.Page;
                         image.RelativeVertical = RelativeVertical.Page;
 
-                        //image.Height = inputDocument.Pages[idx].Height.Value;
-                        //image.Width = inputDocument.Pages[idx].Width.Value;
                         image.WrapFormat.Style = WrapStyle.Through;
                         #endregion
-                        //section.AddPageBreak();
                     }
                 });
             });

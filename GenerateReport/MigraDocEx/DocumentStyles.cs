@@ -3,7 +3,7 @@ using MigraDoc.DocumentObjectModel;
 
 namespace GenerateReport.MigraDocEx
 {
-    public class DocumentStyles
+    public static class DocumentStyles
     {
         /// <summary>
         /// Defines the styles used in the document.

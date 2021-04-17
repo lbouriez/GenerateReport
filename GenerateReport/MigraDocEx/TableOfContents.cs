@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace GenerateReport.MigraDocEx
 {
-    public class TableOfContents
+    public static class TableOfContents
     {
         public static void DefineTableOfContents(FinalDocument model)
         {
