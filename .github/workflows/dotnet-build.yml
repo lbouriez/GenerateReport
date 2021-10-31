@@ -1,0 +1,40 @@
+---
+name: .NET build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: linux-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    # - name: Test
+    #   run: dotnet test --no-build --verbosity normal
+    # - name: Publish MuraflexApp
+    #   run: dotnet publish -c MuraflexApp /p:PublishProfile=MuraflexBible\Properties\PublishProfiles\FolderProfile.pubxml
+    # - name: Upload MuraflexApp Build Artifact
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: MuraflexApp
+    #     path: D:\a\GenerateReport\GenerateReport\GenerateReport\bin
+    # - name: Publish ConsoleApp
+    #   run: dotnet publish -c ConsoleApp /p:PublishProfile=ConsoleApp\Properties\PublishProfiles\FolderProfile.pubxml
+    # - name: Upload ConsoleApp Build Artifact
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: ConsoleApp
+    #     path: /home/runner/work/GenerateReport/GenerateReport/ConsoleApp/bin/ConsoleApp/netcoreapp3.1/publish/

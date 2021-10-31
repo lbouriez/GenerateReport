@@ -6,15 +6,8 @@ namespace MuraflexBible
 {
     static class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
-            if (int.Parse(DateTime.Now.ToString("yyyy")) > 2021)
-            {
-                Console.WriteLine("ERROR: An error happened, you need to ask me for help ;)\n" +
-                    "Exiting...");
-                return;
-            }
-
             var parameters = new EntryParameters()
             {
                 FileName = $"{DateTime.Now:yyyy}-{DateTime.Now.AddMonths(-1):MM}-{DateTime.Now:dd} - Monthly Reporting Book-Bible.pdf",
